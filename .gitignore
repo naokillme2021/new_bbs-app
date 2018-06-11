@@ -9,6 +9,7 @@
 
 # Ignore bundler gems.
 vendor/bundle
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -21,10 +22,8 @@ vendor/bundle
 
 # Ignore uploaded files in development
 /storage/*
-
 /node_modules
 /yarn-error.log
-
 /public/assets
 .byebug_history
 

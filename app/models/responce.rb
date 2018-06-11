@@ -1,4 +1,10 @@
 class Responce < ApplicationRecord
+  # レスの文字数を140文字までに制限する
+  validates :value, presence: true, length: { in: 1..140 }
+
+  # 投稿者名の文字数を20文字までに制限する
+  validates :name, presence: false, length: { in: 1..20 }
+
   # thredsテーブルへの紐付け(親)
   belongs_to :thred
 
