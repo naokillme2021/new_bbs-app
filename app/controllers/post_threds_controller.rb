@@ -13,8 +13,8 @@ class PostThredsController < ApplicationController
       @thred.name = params[:thred][:name]
       @thred.title = params[:thred][:title]
       @thred.category_id = params[:thred][:category_id]
-      @thred.date = Date.today
-      @thred.time = Time.now
+      @thred.date = Date.current
+      @thred.time = Time.current
       
       if @thred.save
         # Saveが成功したら、ひとつ前のページへリダイレクト

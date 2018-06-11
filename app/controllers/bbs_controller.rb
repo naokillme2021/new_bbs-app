@@ -25,8 +25,8 @@ class BbsController < ApplicationController
       @responce.child_id = generate_child_id(params[:responce][:thred_id])
       @responce.name = generate_name(params[:responce][:name])
       @responce.value = params[:responce][:value]
-      @responce.date = Date.today
-      @responce.time = Time.now
+      @responce.date = Date.current
+      @responce.time = Time.current
       @responce.save
     end
 
@@ -43,8 +43,8 @@ class BbsController < ApplicationController
       @responce_child.child_id = params[:responce_child][:child_id]
       @responce_child.name = generate_name(params[:responce_child][:name])
       @responce_child.value = params[:responce_child][:value]
-      @responce_child.date = Date.today
-      @responce_child.time = Time.now
+      @responce_child.date = Date.current
+      @responce_child.time = Time.current
       @responce_child.save
     end
   
