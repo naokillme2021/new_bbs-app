@@ -1,4 +1,5 @@
 class PostThredsController < ApplicationController
+
   # Post_thred画面のControllerメソッド
   def post
     # 必要データの読み込み
@@ -7,7 +8,6 @@ class PostThredsController < ApplicationController
 
   # スレッド投稿のメソッド
   def post_thred
-    if params[:thred][:title].present?
       # thredsテーブルへ書き込み
       @thred = Thred.new
       @thred.name = params[:thred][:name]
@@ -15,10 +15,13 @@ class PostThredsController < ApplicationController
       @thred.category_id = params[:thred][:category_id]
       @thred.date = Date.today
       @thred.time = Time.now
-      @thred.save
-
-      # ひとつ前のページへリダイレクト
-      redirect_to controller: 'bbs', action: 'show'
-    end
+      
+      if @thred.save
+        # Saveが成功したら、ひとつ前のページへリダイレクト
+        redirect_to controller: 'bbs', action: 'show'
+      else
+        # Saveに失敗したら、同じページにリダイレクト
+        redirect_to controller: 'post_threds', action: 'post'
+      end
   end
 end

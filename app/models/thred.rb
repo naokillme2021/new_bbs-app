@@ -1,4 +1,7 @@
 class Thred < ApplicationRecord
+  # タイトル文字数を50文字までに制限する
+  validates :title, presence: true, length: { in: 1..50 }
+
   # responcesテーブルへの紐付け(子)
   has_many :responces
 
