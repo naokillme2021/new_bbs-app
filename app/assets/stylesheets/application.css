@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ body {
+     background-color: #e6e6e6
+ }
+
+ div.value{
+     margin-left: 15px
+ }
+
+ div.value_res_child{
+    margin-left: 28px;
+    margin-top: 10px
+}
+
+font{
+    font-family: "ＭＳ ゴシック"
+}
+
+font.title{
+    color: #0101DF;
+    font-weight: bold
+}
+
+ font.thred_name{
+     color: #dc143c;
+     size: 20pt;
+     font-weight: bold
+ }
+
+ font.name{
+     color: #228b22;
+     font-weight: bold
+ }
+
+ font.category{
+    color: #dc143c;
+    font-size: 10pt;
+    font-style: italic
+ }
+
+ font.date{
+     color: #808080;
+     font-size: 10pt
+ }
+
+ font.resform{
+    color: #808080;
+    font-size: 3pt
+}
+
+a.resform{
+    color: #dc143c;
+    font-family: "メイリオ";
+    font-size: 15px;
+    text-decoration: none;
+ }
+
+ div.resform1{
+    margin-top: 10px
+ }
+
+ div.resform2{
+    margin-top: 5px
+ }
+
+ header{
+    height: 56px;
+    width: 100%;
+    background-color:#e6e6e6;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+ }
+
+ font.header{
+     font-size: 15pt;
+     font-weight: bold
+     
+ }
+
+ font.bbs_title{
+    color: #0101DF;
+    size: 30pt;
+    font-weight: bold
+}

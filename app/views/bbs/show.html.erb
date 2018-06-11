@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> 掲示板 </title>
+	</head>
+	<body>
+		<header class = "header">
+			<font class="header">掲示板的なアレ</font>
+			<br>
+			<%= link_to "新しいスレッドを作成する", "/post_threds/post", class: 'btn btn-default' %>
+			<hr>
+		</header>
+		<br>
+		<br>
+		<p>
+		<% @thred.each do |thred| %>
+		<!-- スレッドタイトル -->
+                <font class="title"><%= link_to thred.title, "/bbs/show/#{thred.id}" %></font>
+		<!-- レスポンスpre-->
+		<% responces = @res.select {|res| thred.id == res.thred_id}.first(1) %>
+			<% responces.each do |responce| %>
+			<div>
+				<font size = 2><%= simple_format(responce.value, {}, wrapper_tag: "div") %></font>
+			</div>
+			<% end %>
+		</p>
+			<!-- カテゴリ -->
+			<font class="category"><%= thred.category&.category_name %></font>
+			<!-- 投稿日時(フォーマット変換)　-->
+			<font class="date"> <%= thred.date.strftime("%Y年%m月%d日") %></font>
+		<hr>
+		<% end %>
+	</body>
+</html>

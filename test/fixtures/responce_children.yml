@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  thred_id: 
+  child_id: 
+  name: MyString
+  value: MyString
+  date: 2018-05-24
+  time: 2018-05-24 20:56:51
+
+two:
+  thred_id: 
+  child_id: 
+  name: MyString
+  value: MyString
+  date: 2018-05-24
+  time: 2018-05-24 20:56:51

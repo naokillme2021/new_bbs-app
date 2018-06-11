@@ -1,0 +1,70 @@
+<html>
+  <body>
+    <font>
+    <%= link_to "■スレッド一覧へ戻る■", "./"%>
+    <hr>
+      <!-- スレッドタイトル -->
+      <p>
+        <% @thred.each do |thred| %>
+          <font class="thred_name"><%= thred.title %></font>
+        <% end %>
+      </p>
+      <!--入力フォーム -->
+      <%= form_for Responce.new do |f| %>
+        <div>
+          <%= f.submit :レスを書き込む %>
+          <%= f.label :名前： %>
+          <%= f.text_field :name %>
+          <%= f.hidden_field :thred_id, :value => @thred.ids %>
+          <%= f.hidden_field :url, :value => request.fullpath %>
+        </div>
+        <div>
+          <%= f.text_area :value, size: "55x2" %>
+        </div>
+      <% end %>
+      <br>
+      <!-- レス -->
+      <% @res.each do |res| %>
+        <!-- ID :投稿者名:yyyy/mm/dd hh:mm:ss -->
+        <%= res.child_id %>:<font class="name"><%= res.name %></font>
+        <%= res.date.strftime("%Y/%m/%d") %> <%= res.time.strftime("%H:%M:%S") %>
+        <!-- 返信ボタン -->
+        <%= link_to('返信する', 'javascript:void(0)', onclick: "show_block(#{res.child_id})", class: "resform") %>
+        <br>
+        <div class="value">
+          <!--レス内容 -->
+          <%= simple_format(res.value, {}, wrapper_tag: "div") %>
+          <!-- 返信フォーム -->
+          <div id= <%= res.child_id %> style="display:none;" class="resform1">
+            <%= form_for ResponceChild.new do |f| %>
+            <%= f.label :名前： %>
+            <%= f.text_field :name %>
+            <%= f.hidden_field :thred_id, :value => @thred.ids %>
+            <%= f.hidden_field :child_id, :value => res.child_id %>
+            <%= f.hidden_field :url, :value => request.fullpath %>
+            <div class="resform2">
+              <%= f.text_area :value, size: "60x3" %>
+            </div>
+            <%= f.submit :送信 %>
+          <% end %>
+          </div>
+        <!-- レスへのレス -->
+        <% @res_child.each do |child| %>
+          <% if res.child_id == child.child_id %>
+            <hr>
+            <div class="value_res_child">
+              <font class="name"><%= child.name %></font>
+              <%= child.date.strftime("%Y/%m/%d") %> <%= child.time.strftime("%H:%M:%S") %>
+              <%= simple_format(child.value, {}, wrapper_tag: "div") %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+        <br>
+      <% end %>
+      <hr>
+      <!-- スレッド一覧へ戻るボタン -->
+      <%= link_to "戻る", "./"%>
+    </font>
+  </body>
+</html>

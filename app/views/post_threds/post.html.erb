@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <title>スレッドを投稿する</title>
+    スレッドを投稿する
+    <p>
+      <div class="value">
+        <font color = "red">
+          ※以下の点をお守りください
+          <li>個人情報をむやみに書き込まない事</li>
+          <li>他人の誹謗中傷にあたる内容を書き込まない事</li>
+        </font>
+      </div>
+    </p>
+      <%= form_for Thred.new do |f| %>
+        <div>
+          <!-- カテゴリ選択 -->
+          <div>
+            <%= f.label :カテゴリ： %>
+            <%= f.collection_select :category_id, Category.all, :id, :category_name %>
+          </div>
+          <div>  
+            <%= f.label :新しいスレッド名： %>
+            <%= f.text_field :title %>
+          </div>
+          <div>
+            <%= f.submit :書き込む %>
+          </div>
+        </div>
+      <% end %>
+    <!-- スレッド一覧へ戻るボタン -->
+    <%= link_to "戻る", "../bbs/show/"%>
+    </body>
+</html>
